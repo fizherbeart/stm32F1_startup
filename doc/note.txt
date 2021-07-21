@@ -1,0 +1,11 @@
+gpio的初始化看led.c或者key.c
+
+动态语法检测：config-text completion
+
+GPIOx 是定义的结构体指针 所以访问成员需要  “->”
+
+时钟挂载   在rcc.c文件中
+
+systick的库函数在core_cm3.h中  systick_config() 重装载值ticks<=2^24
+
+中断服务函数的名字在startup_stm32f10x_md.s中
