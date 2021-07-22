@@ -35,3 +35,4 @@
 .\objects\task.o: ..\module\inc\delay.h
 .\objects\task.o: ..\module\inc\usart.h
 .\objects\task.o: ..\module\inc\exti.h
+.\objects\task.o: ..\module\inc\touch_IC.h

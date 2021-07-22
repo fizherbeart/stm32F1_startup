@@ -4,11 +4,8 @@
 void task(void){
 	
 	while(1){
-		
-		
-		LED_flash();
-		
-//		Usart_SendByte(USART1, 100);		
+		//		LED_flash();	
+		//		Usart_SendByte(USART1, 100);
 	}
 	
 }

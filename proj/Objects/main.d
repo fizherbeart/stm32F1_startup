@@ -34,6 +34,7 @@
 .\objects\main.o: ..\module\inc\delay.h
 .\objects\main.o: ..\module\inc\usart.h
 .\objects\main.o: ..\module\inc\exti.h
+.\objects\main.o: ..\module\inc\touch_IC.h
 .\objects\main.o: ..\user\task.h
 .\objects\main.o: ..\user\sysclk.h
 .\objects\main.o: ..\user\nvic.h

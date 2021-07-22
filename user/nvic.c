@@ -18,8 +18,8 @@ void NVIC_Config(void) //中断优先级管理
 
 
 void NVIC_Struct(uint8_t PreemptionPriority,uint8_t SubPriority,uint8_t Channel,FunctionalState Cmd)
-	{
-		NVIC_InitTypeDef NVIC_InitStruct;		
+{
+	NVIC_InitTypeDef NVIC_InitStruct;		
 	NVIC_InitStruct.NVIC_IRQChannel = Channel;
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = PreemptionPriority;
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority = SubPriority;
