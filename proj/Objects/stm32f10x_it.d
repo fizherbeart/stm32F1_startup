@@ -36,3 +36,4 @@
 .\objects\stm32f10x_it.o: ..\module\inc\delay.h
 .\objects\stm32f10x_it.o: ..\module\inc\usart.h
 .\objects\stm32f10x_it.o: ..\module\inc\exti.h
+.\objects\stm32f10x_it.o: ..\module\inc\touch_IC.h

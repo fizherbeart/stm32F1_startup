@@ -1,5 +1,5 @@
 #include "usart.h"
-
+#include "module.h"
 
 void USART1_Config(void)
 {
@@ -11,26 +11,31 @@ void USART1_Config(void)
 	
 	
     GPIO_InitStrue.GPIO_Mode=GPIO_Mode_AF_PP;  
-    GPIO_InitStrue.GPIO_Pin=GPIO_Pin_9;  
+    GPIO_InitStrue.GPIO_Pin=GPIO_Pin_9;  // TX
     GPIO_InitStrue.GPIO_Speed=GPIO_Speed_10MHz;  
     GPIO_Init(GPIOA,&GPIO_InitStrue);  
      
     GPIO_InitStrue.GPIO_Mode=GPIO_Mode_IN_FLOATING;  
-    GPIO_InitStrue.GPIO_Pin=GPIO_Pin_10;  
+    GPIO_InitStrue.GPIO_Pin=GPIO_Pin_10; // RX
     GPIO_InitStrue.GPIO_Speed=GPIO_Speed_10MHz;  
     GPIO_Init(GPIOA,&GPIO_InitStrue); 
 	 
 	  USART_InitStrue.USART_BaudRate=9600; 
+		USART_InitStrue.USART_WordLength=USART_WordLength_8b;
+		USART_InitStrue.USART_StopBits=USART_StopBits_1;	
+		USART_InitStrue.USART_Parity=USART_Parity_No; 
     USART_InitStrue.USART_HardwareFlowControl=USART_HardwareFlowControl_None; 
     USART_InitStrue.USART_Mode=USART_Mode_Tx|USART_Mode_Rx;  
-    USART_InitStrue.USART_Parity=USART_Parity_No;  
-    USART_InitStrue.USART_StopBits=USART_StopBits_1;  
-    USART_InitStrue.USART_WordLength=USART_WordLength_8b;   
+     
+      
 	  USART_Init(USART1,&USART_InitStrue);
  
     USART_Cmd(USART1,ENABLE);//使能串口1  
-		//USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);//开启接收中断
+		USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);//开启接收中断
 }
+
+
+// 功能函数
 
 /* 发送一个字节 */
 void Usart_SendByte(USART_TypeDef* pUSARTx, uint8_t data)
@@ -100,14 +105,23 @@ void Usart_SendStr(USART_TypeDef* pUSARTx, uint8_t *str)
 
 
 
-//void USART1_IRQHandler(void)  
+void USART1_IRQHandler(void)  
 
-//{  
-//     u16 res =0;  
-//     if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)  
-// {  
-//     res= USART_ReceiveData(USART1); 	 
-//     USART_SendData(USART1,res);
-//  }  
-//}
+{  
+	u16 res =0;  
+	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)  
+		{  
+			USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+			res= USART_ReceiveData(USART1); 	 
+		}  
+			if(res=='1')//接收到1，点亮LED
+			{
+				GPIO_ResetBits(GPIOC, LED_GPIO_PIN);
+				anti_touch();
+			}
+			else//其他情况熄灭LED
+			{
+				GPIO_SetBits(GPIOC, LED_GPIO_PIN);
+			}		
+}
 

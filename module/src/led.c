@@ -13,6 +13,9 @@ void led_init(void)
 	GPIO_InitStruct.GPIO_Pin = LED_GPIO_PIN;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(LED_GPIO_PORT, &GPIO_InitStruct);	
+	
+		GPIO_SetBits(GPIOC, LED_GPIO_PIN);
+
 }
 
 

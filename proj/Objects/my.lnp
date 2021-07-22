@@ -35,6 +35,7 @@
 ".\objects\delay.o"
 ".\objects\usart.o"
 ".\objects\exti.o"
+".\objects\touch_ic.o"
 --strict --scatter ".\Objects\my.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

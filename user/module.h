@@ -6,6 +6,8 @@
 #include "delay.h"
 #include "usart.h"
 #include "exti.h"
+#include "touch_IC.h"
+
 
 
 #endif

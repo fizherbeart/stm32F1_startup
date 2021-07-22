@@ -29,3 +29,9 @@
 .\objects\usart.o: ..\lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\usart.o: ..\lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\usart.o: ..\lib\STM32F10x_StdPeriph_Driver\inc\misc.h
+.\objects\usart.o: ..\user\module.h
+.\objects\usart.o: ..\module\inc\led.h
+.\objects\usart.o: ..\module\inc\key.h
+.\objects\usart.o: ..\module\inc\delay.h
+.\objects\usart.o: ..\module\inc\exti.h
+.\objects\usart.o: ..\module\inc\touch_IC.h
